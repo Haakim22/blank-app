@@ -12,11 +12,14 @@ env.add_router(router)
 # input
 name = st.text_input("Enter your name")
 
-# knowledge
+# knowledge base
 env.build("(deftemplate result (slot name))")
+# add facts to working memory
 env.assert_string(f'(result(name "{name}"))')
+# inference
 env.run()
 
+#output
 results = []
 for fact in env.facts():
     if fact.template.name == 'result' :
