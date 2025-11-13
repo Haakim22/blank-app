@@ -1,6 +1,13 @@
 import streamlit as st
+import clips
+import logging
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+# Setup working environment
+logging.basicConfig(level=15, format='%(message)s')
+
+env = clips.Environment()
+router = clips.LoggingRouter()
+env.add_router(router)
+
+# input
+name = st.text_input
